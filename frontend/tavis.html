@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <title>TAVIS Safety Dashboard</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Playfair+Display:wght@400;500;600;700&display=swap');
+  </style>
+</head>
+<body class="bg-amber-50 text-amber-900 min-h-screen" style="font-family: 'Crimson Text', serif;">
+  <!-- Navigation -->
+  <nav class="bg-amber-900 border-b-4 border-amber-800 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <div class="flex items-center space-x-8">
+          <h1 class="text-3xl font-bold tracking-tighter text-amber-100" style="font-family: 'Playfair Display', serif; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">TAVIS</h1>
+          <div class="hidden md:flex items-center space-x-6">
+            <a href="#" class="text-amber-200 hover:text-amber-100 text-lg font-medium transition-colors border-b-2 border-amber-100">Dashboard</a>
+            <a href="#" class="text-amber-300 hover:text-amber-100 text-lg font-medium transition-colors">Emergency</a>
+            <a href="#" class="text-amber-300 hover:text-amber-100 text-lg font-medium transition-colors">Reports</a>
+            <a href="#" class="text-amber-300 hover:text-amber-100 text-lg font-medium transition-colors">Settings</a>
+          </div>
+        </div>
+        <div class="flex items-center space-x-4">
+          <div class="bg-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold animate-pulse">
+            ACTIVE ALERT
+          </div>
+          <div class="w-12 h-12 bg-amber-700 rounded-full flex items-center justify-center border-2 border-amber-600">
+            <span class="text-lg font-bold text-amber-100" style="font-family: 'Playfair Display', serif;">T</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Emergency Header -->
+  <div class="bg-red-800 border-b-4 border-red-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <div class="flex items-center justify-center space-x-4">
+        <i data-lucide="alert-triangle" class="w-8 h-8 text-yellow-300 animate-pulse"></i>
+        <h2 class="text-2xl font-bold text-yellow-300" style="font-family: 'Playfair Display', serif;">SAFETY DASHBOARD - EMERGENCY SERVICES ACTIVE</h2>
+        <i data-lucide="alert-triangle" class="w-8 h-8 text-yellow-300 animate-pulse"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Emergency SOS Section -->
+    <div class="mb-8">
+      <div class="bg-red-600 rounded-2xl p-8 border-4 border-red-800 shadow-2xl">
+        <div class="text-center">
+          <h2 class="text-4xl font-bold text-white mb-4" style="font-family: 'Playfair Display', serif; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">EMERGENCY SOS</h2>
+          <button onclick="sendSOS()" class="bg-yellow-400 hover:bg-yellow-300 text-red-900 px-12 py-6 rounded-full text-2xl font-bold transition-all transform hover:scale-105 shadow-2xl border-4 border-yellow-600" style="font-family: 'Playfair Display', serif;">
+            <i data-lucide="phone-call" class="w-8 h-8 inline mr-3"></i>
+            ACTIVATE SOS
+          </button>
+          <p class="text-red-100 mt-4 text-lg">Press to immediately contact emergency services</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Status Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <!-- Active Alerts -->
+      <div class="bg-amber-100 rounded-xl p-6 border-4 border-amber-800 shadow-lg">
+        <div class="flex items-center justify-between mb-4">
+          <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center border-4 border-red-800">
+            <i data-lucide="alert-circle" class="w-8 h-8 text-white"></i>
+          </div>
+          <span class="text-3xl font-bold text-red-800" style="font-family: 'Playfair Display', serif;">3</span>
+        </div>
+        <h3 class="text-xl font-bold text-amber-900 mb-2" style="font-family: 'Playfair Display', serif;">Active Alerts</h3>
+        <p class="text-amber-800 text-lg">Critical incidents requiring attention</p>
+      </div>
+
+      <!-- Danger Zones -->
+      <div class="bg-amber-100 rounded-xl p-6 border-4 border-amber-800 shadow-lg">
+        <div class="flex items-center justify-between mb-4">
+          <div class="w-16 h-16 bg-orange-600 rounded-full flex items-center justify-center border-4 border-orange-800">
+            <i data-lucide="map-pin" class="w-8 h-8 text-white"></i>
+          </div>
+          <span class="text-3xl font-bold text-orange-800" style="font-family: 'Playfair Display', serif;">7</span>
+        </div>
+        <h3 class="text-xl font-bold text-amber-900 mb-2" style="font-family: 'Playfair Display', serif;">Danger Zones</h3>
+        <p class="text-amber-800 text-lg">Areas with elevated risk levels</p>
+      </div>
+
+      <!-- Safe Locations -->
+      <div class="bg-amber-100 rounded-xl p-6 border-4 border-amber-800 shadow-lg">
+        <div class="flex items-center justify-between mb-4">
+          <div class="w-16 h-16 bg-green-700 rounded-full flex items-center justify-center border-4 border-green-900">
+            <i data-lucide="shield-check" class="w-8 h-8 text-white"></i>
+          </div>
+          <span class="text-3xl font-bold text-green-800" style="font-family: 'Playfair Display', serif;">12</span>
+        </div>
+        <h3 class="text-xl font-bold text-amber-900 mb-2" style="font-family: 'Playfair Display', serif;">Safe Locations</h3>
+        <p class="text-amber-800 text-lg">Verified secure areas nearby</p>
+      </div>
+
+      <!-- Emergency Services -->
+      <div class="bg-amber-100 rounded-xl p-6 border-4 border-amber-800 shadow-lg">
+        <div class="flex items-center justify-between mb-4">
+          <div class="w-16 h-16 bg-blue-700 rounded-full flex items-center justify-center border-4 border-blue-900">
+            <i data-lucide="truck" class="w-8 h-8 text-white"></i>
+          </div>
+          <span class="text-3xl font-bold text-blue-800" style="font-family: 'Playfair Display', serif;">4</span>
+        </div>
+        <h3 class="text-xl font-bold text-amber-900 mb-2" style="font-family: 'Playfair Display', serif;">Units Available</h3>
+        <p class="text-amber-800 text-lg">Emergency response teams ready</p>
+      </div>
+    </div>
+
+    <!-- Live Danger Zones Map -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+      <div class="lg:col-span-2 bg-amber-100 rounded-xl border-4 border-amber-800 shadow-lg overflow-hidden">
+        <div class="bg-amber-800 px-6 py-4 border-b-4 border-amber-900">
+          <h3 class="text-2xl font-bold text-amber-100" style="font-family: 'Playfair Display', serif;">Live Danger Zones Map</h3>
+        </div>
+        <div class="p-6">
+          <div id="map" class="h-96 rounded-lg border-2 border-amber-700"></div>
+
+            <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+            <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+            <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+            
+            <!-- Legend -->
+            <div class="absolute bottom-4 left-4 bg-amber-100 p-3 rounded-lg border-2 border-amber-700">
+              <div class="space-y-2 text-sm">
+                <div class="flex items-center space-x-2">
+                  <div class="w-3 h-3 bg-red-600 rounded-full"></div>
+                  <span class="text-amber-900 font-semibold">High Risk</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <div class="w-3 h-3 bg-orange-600 rounded-full"></div>
+                  <span class="text-amber-900 font-semibold">Moderate Risk</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <div class="w-3 h-3 bg-green-700 rounded-full"></div>
+                  <span class="text-amber-900 font-semibold">Safe Zone</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <div class="w-3 h-3 bg-blue-600 rounded-full"></div>
+                  <span class="text-amber-900 font-semibold">Your Location</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Alert Panel -->
+      <div class="bg-amber-100 rounded-xl border-4 border-amber-800 shadow-lg">
+        <div class="bg-red-800 px-6 py-4 rounded-t-lg border-b-4 border-red-900">
+          <h3 class="text-2xl font-bold text-yellow-300" style="font-family: 'Playfair Display', serif;">Active Alerts</h3>
+        </div>
+        <div class="p-6 space-y-4">
+          <div class="bg-red-100 border-l-4 border-red-600 p-4 rounded">
+            <div class="flex items-start space-x-3">
+              <i data-lucide="flame" class="w-6 h-6 text-red-600 mt-1"></i>
+              <div>
+                <p class="text-red-800 font-bold text-lg">FIRE HAZARD</p>
+                <p class="text-red-700">Industrial District - 0.8 miles NE</p>
+                <p class="text-red-600 text-sm">15 minutes ago</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-orange-100 border-l-4 border-orange-600 p-4 rounded">
+            <div class="flex items-start space-x-3">
+              <i data-lucide="zap" class="w-6 h-6 text-orange-600 mt-1"></i>
+              <div>
+                <p class="text-orange-800 font-bold text-lg">POWER OUTAGE</p>
+                <p class="text-orange-700">Downtown Area - 1.2 miles S</p>
+                <p class="text-orange-600 text-sm">32 minutes ago</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-yellow-100 border-l-4 border-yellow-600 p-4 rounded">
+            <div class="flex items-start space-x-3">
+              <i data-lucide="cloud-rain" class="w-6 h-6 text-yellow-600 mt-1"></i>
+              <div>
+                <p class="text-yellow-800 font-bold text-lg">FLOOD WARNING</p>
+                <p class="text-yellow-700">River District - 2.1 miles W</p>
+                <p class="text-yellow-600 text-sm">1 hour ago</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nearby Suggestions -->
+    <div class="bg-amber-100 rounded-xl border-4 border-amber-800 shadow-lg">
+      <div class="bg-amber-800 px-6 py-4 rounded-t-lg border-b-4 border-amber-900">
+        <h3 class="text-2xl font-bold text-amber-100" style="font-family: 'Playfair Display', serif;">Nearby Safety Suggestions</h3>
+      </div>
+      <div class="p-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Safe Route -->
+          <div class="bg-green-50 border-4 border-green-700 rounded-lg p-6">
+            <div class="flex items-center space-x-3 mb-4">
+              <div class="w-12 h-12 bg-green-700 rounded-full flex items-center justify-center">
+                <i data-lucide="navigation" class="w-6 h-6 text-white"></i>
+              </div>
+              <h4 class="text-xl font-bold text-green-800" style="font-family: 'Playfair Display', serif;">Safe Route</h4>
+            </div>
+            <p class="text-green-700 text-lg mb-4">Alternate path avoiding danger zones</p>
+            <button class="w-full bg-green-700 hover:bg-green-600 text-white px-4 py-3 rounded-lg font-semibold transition-colors text-lg">
+              Get Directions
+            </button>
+          </div>
+
+          <!-- Emergency Shelter -->
+          <div class="bg-blue-50 border-4 border-blue-700 rounded-lg p-6">
+            <div class="flex items-center space-x-3 mb-4">
+              <div class="w-12 h-12 bg-blue-700 rounded-full flex items-center justify-center">
+                <i data-lucide="home" class="w-6 h-6 text-white"></i>
+              </div>
+              <h4 class="text-xl font-bold text-blue-800" style="font-family: 'Playfair Display', serif;">Emergency Shelter</h4>
+            </div>
+            <p class="text-blue-700 text-lg mb-4">Community Center - 0.5 miles away</p>
+            <button class="w-full bg-blue-700 hover:bg-blue-600 text-white px-4 py-3 rounded-lg font-semibold transition-colors text-lg">
+              Navigate There
+            </button>
+          </div>
+
+          <!-- Medical Station -->
+          <div class="bg-red-50 border-4 border-red-700 rounded-lg p-6">
+            <div class="flex items-center space-x-3 mb-4">
+              <div class="w-12 h-12 bg-red-700 rounded-full flex items-center justify-center">
+                <i data-lucide="heart-pulse" class="w-6 h-6 text-white"></i>
+              </div>
+              <h4 class="text-xl font-bold text-red-800" style="font-family: 'Playfair Display', serif;">Medical Station</h4>
+            </div>
+            <p class="text-red-700 text-lg mb-4">First Aid Post - 0.7 miles away</p>
+            <button class="w-full bg-red-700 hover:bg-red-600 text-white px-4 py-3 rounded-lg font-semibold transition-colors text-lg">
+              Find Location
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+  </script>
+  <script>
+    // Initialize map (India center)
+    var map = L.map('map').setView([23.2599, 77.4126], 13);
+
+    // OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    // 🔴 Danger Zones (Geofencing Areas)
+    var dangerZones = [
+        { lat: 23.2599, lng: 77.4126, radius: 500 },
+        { lat: 23.2620, lng: 77.4200, radius: 400 }
+    ];
+
+    var circles = [];
+
+    dangerZones.forEach(zone => {
+        let circle = L.circle([zone.lat, zone.lng], {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0.4,
+            radius: zone.radius
+        }).addTo(map);
+
+        circles.push(circle);
+    });
+
+    // 🔥 Heatmap (Danger intensity)
+    var heat = L.heatLayer([
+        [23.2599, 77.4126, 1],
+        [23.2605, 77.4150, 0.8],
+        [23.2620, 77.4200, 0.9]
+    ], { radius: 25 }).addTo(map);
+
+    // 📍 User Location Tracking
+    var userMarker;
+
+    navigator.geolocation.watchPosition(function(position) {
+        var lat = position.coords.latitude;
+        var lng = position.coords.longitude;
+
+        if (userMarker) {
+            userMarker.setLatLng([lat, lng]);
+        } else {
+            userMarker = L.marker([lat, lng]).addTo(map)
+                .bindPopup("You are here").openPopup();
+        }
+
+        map.setView([lat, lng]);
+
+        // 🚨 Check Geofence
+        circles.forEach(circle => {
+            let distance = map.distance([lat, lng], circle.getLatLng());
+
+            if (distance < circle.getRadius()) {
+                alert("🚨 WARNING: You entered a danger zone!");
+            }
+        });
+
+    }, function(error) {
+        console.log("Location error:", error);
+    });
+
+  map.on('click', function(e) {
+    let lat = e.latlng.lat;
+    let lng = e.latlng.lng;
+
+    let radius = prompt("Enter danger zone radius (meters):", "500");
+
+    let circle = L.circle([lat, lng], {
+        color: 'red',
+        fillColor: '#f03',
+        fillOpacity: 0.4,
+        radius: radius
+    }).addTo(map);
+
+    circles.push(circle);
+  });
+
+  function getColor(risk) {
+    if (risk > 0.7) return "red";
+    if (risk > 0.4) return "orange";
+    return "green";
+}
+async function sendSOS() {
+    navigator.geolocation.getCurrentPosition(async (pos) => {
+        const res = await fetch("http://localhost:5000/tavis/sos", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                latitude: pos.coords.latitude,
+                longitude: pos.coords.longitude
+            })
+        });
+
+        const data = await res.json();
+
+        alert(
+`🚨 SOS SENT
+
+ID: ${data.emergencyId}
+
+🚓 ${data.nearestPolice.name}
+ETA: ${data.nearestPolice.eta}
+
+🏥 ${data.nearestHospital.name}
+ETA: ${data.nearestHospital.eta}`
+        );
+    });
+}
+</script>
+
+
+</body>
+</html>
