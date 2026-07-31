@@ -285,7 +285,11 @@ Open the frontend pages in your browser or serve them using a local server.
 
 ---
 
-# Team
+# Team 
+Mahi Gadage
+Govind Mewada 
+
+---
 
 Developed as a Smart Heritage Tourism Solution to enhance cultural exploration, tourist safety, and intelligent travel assistance.
 
